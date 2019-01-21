@@ -1,6 +1,8 @@
 # Monarch Sharing Shortcode
 This WordPress plugin provides a shortcode for adding inline Monarch sharing buttons above footer elements. This repo was originally forked from a repo created by [Matt Mirus](https://github.com/mmirus).
 
+From our experience, Matt's plugin rendered the inline share buttons either at the top/bottom of the page as per Monarch's configuration. Unfortunately, this caused Monarch to render the buttons below our footer! This plugin differs from Matt's because it renders the share buttons inline wherever the shortcode is used. Instead of choosing the top or bottom, this plugin gives you the freedom to place Monarch share buttons wherever you want!
+
 ## Installation
 To install the plugin:
   1. Click on the green `Clone or download` button located on this page.
