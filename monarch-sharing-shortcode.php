@@ -1,12 +1,18 @@
 <?php
+# @Author: Jack Woods
+# @Date:   2019-01-21T12:50:39-08:00
+# @Filename: monarch-sharing-shortcode.php
+# @Last modified by:   Jack Woods
+# @Last modified time: 2019-01-21T15:07:05-08:00
+# The following comment block is for Wordpress:
 /*
 Plugin Name: Monarch Sharing Shortcode
-Plugin URI: https://github.com/mmirus/monarch-sharing-shortcode
-Description: Provides a shortcode for adding inline Monarch sharing buttons.
-Author: Matt Mirus
-Author URI: https://github.com/mmirus
-Version: 1.0.2
-GitHub Plugin URI: https://github.com/mmirus/monarch-sharing-shortcode
+Plugin URI: https://github.com/Shields-Art-Studios/monarch-sharing-shortcode
+Description: Provides a shortcode for adding inline Monarch sharing buttons that render above a divi footer.
+Author: Jack Woods
+Author URI: https://github.com/jackrwoods
+Version: 1.0.0
+GitHub Plugin URI: https://github.com/Shields-Art-Studios/monarch-sharing-shortcode
 */
 
 namespace MSS;
@@ -22,13 +28,13 @@ function monarch_sharing_shortcode($atts) {
 		$atts,
 		'monarch_share'
 	);
-  
-  return generate_inline_icons('et_social_inline_bottom', $atts['url'], $atts['center']);
+
+  return generate_inline_icons('et_social_inline', $atts['url'], $atts['center']);
 }
 add_shortcode('monarch_share', 'MSS\\monarch_sharing_shortcode');
 
 // copied from monarch.php and edited to allow manually specifying URL
-function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $center = false) {
+function generate_inline_icons($class = 'et_social_inline', $url = '', $center = false) {
   $monarch = $GLOBALS['et_monarch'];
   $monarch_options = $monarch->monarch_options;
 
@@ -45,7 +51,7 @@ function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $c
         %1$s
       </div>
     </div>',
-    $monarch->get_icons_list( 'inline', '', false, $display_all_button, false, '', $url ),
+		trim(preg_replace('/\t+/', '', $monarch->get_icons_list( 'inline', '', false, $display_all_button, false, '', $url ))),
     'auto' == $monarch_options[ 'sharing_inline_col_number' ]
       ? 'autowidth'
       : esc_attr( $monarch_options[ 'sharing_inline_col_number' ] . 'col' ),
@@ -56,9 +62,7 @@ function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $c
     true == $monarch_options[ 'sharing_inline_total' ] ? ' et_social_withtotalcount' : '',
     true == $monarch_options[ 'sharing_inline_total' ]
       ? sprintf(
-        '<div class="et_social_totalcount">
-          <span class="et_social_totalcount_count et_social_total_share" data-post_id="%2$s"></span>
-          <span class="et_social_totalcount_label">%1$s</span>
+        '<div class="et_social_totalcount"><span class="et_social_totalcount_count et_social_total_share" data-post_id="%2$s"></span><span class="et_social_totalcount_label">%1$s</span>
         </div>',
         esc_html__( 'Shares', 'Monarch' ),
         esc_attr( get_the_ID() )
@@ -75,5 +79,9 @@ function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $c
     $inline_content .= '<style>.mss-center .et_social_networks{text-align:center!important}.mss-center .et_social_icons_container li{float:none!important;display:inline-block!important}</style>';
   }
 
+	// Center Icons
+	$inline_content .= '<style>.et_social_share {text-align: center !important;}</style>';
+
+	// Return content
   return $inline_content;
 }

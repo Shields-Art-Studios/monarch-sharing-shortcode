@@ -1,7 +1,5 @@
 # Monarch Sharing Shortcode
-A WordPress plugin that provides a shortcode for adding inline Monarch sharing buttons.
-
-Credit to Shahar's comment <a href="https://journalxtra.com/wordpress/quicksnips/how-to-add-a-social-sharing-shortcode-to-monarch-from-elegant-themes/#comment-36511">here</a> for getting the ball rolling.
+This WordPress plugin provides a shortcode for adding inline Monarch sharing buttons above footer elements. This repo was originally forked from a repo created by [Matt Mirus](https://github.com/mmirus).
 
 ## Usage:
 
