@@ -8,9 +8,12 @@ To install the plugin:
   3. Login into your wp-admin dashboard and click `Plugins` and then `Add New`.
   4. Click `Upload`, then click `Browse...` and locate the .ZIP archive on your computer.
   5. Click `Install Now`.
-  6. Lastly, click `Activate Plugin`"`.
+  6. Lastly, click `Activate Plugin`.
 
 ## Usage
+To add share buttons to a wordpress post/page:
+  1. In the Divi Visual Builder, add a new code module.
+  2. In the module's settings window, enter one of the following shortcodes into the `content` section:
 
 *Sharing buttons with default URL (current page)*
 ```
@@ -25,4 +28,9 @@ To install the plugin:
 *Sharing buttons with custom URL*
 ```
 [monarch_share url="custom url"]
+```
+
+*Sharing buttons with both*
+```
+[monarch_share center=true url="custom url"]
 ```
